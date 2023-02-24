@@ -1,49 +1,24 @@
+import {useEffect} from "react";
 
-import './App.css';
+// d44009c7
 
-const Person = (props) => {
+const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d44009c7";
 
-  return(
-    <>
-      <h5>Name: {props.name}</h5>
-      <h5>Last name: {props.lastname}</h5>
-      <h5>Age = {props.age}</h5>
-    </>
-  
-  )
-
-}
 
 const App = () => {
-  let name = "John";
-  const isNameShowing = true;
-  const isUserLoggedIn = true;
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL} &s=${title}`);
+    const data = await response.json();
+
+    console.log(data);
+  }
+    useEffect(() =>{
+      searchMovies('Spiderman');
+    },[]);
 
   return (
     <div className="App">
-      
-      <h1>Hello, {isNameShowing ? name : "someone"}!</h1>
-      {isUserLoggedIn && isNameShowing ?
-    (
-      <>
-      //you can use only string but for dynamic use curly braces 
-      <Person name = "John" lastname = "Doe" age = {23+2}/>
-      <Person name = "Ryan" lastname = "Hassan" age = "26"/>
-      
-      
-      </>
-    ) :
-    (
-      <>
-      <h2>
-        You're not logged in!
-        
-      </h2>
-      <h3>Please log in</h3>
-      </>
-    ) 
-    }
-   
+    <h1>App</h1>
     </div>
     
   );
