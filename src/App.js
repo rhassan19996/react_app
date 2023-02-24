@@ -1,5 +1,6 @@
 import {useEffect} from "react";
-
+import "./App.css";
+import SearchIcon from './search.svg';
 // d44009c7
 
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d44009c7";
@@ -10,7 +11,7 @@ const App = () => {
     const response = await fetch(`${API_URL} &s=${title}`);
     const data = await response.json();
 
-    console.log(data);
+    console.log(data.Search);
   }
     useEffect(() =>{
       searchMovies('Spiderman');
@@ -18,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-    <h1>App</h1>
+    <h1>MovieLand</h1>
     </div>
     
   );
